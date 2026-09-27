@@ -25,11 +25,11 @@ public class SecurityConfig {
     private String frontendUrl;
 
     private final JwtAuthFilter jwtAuthFilter;
-    // private final OAuth2SuccessHandler oAuth2SuccessHandler;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
     public SecurityConfig(JwtAuthFilter jwtAuthFilter, OAuth2SuccessHandler oAuth2SuccessHandler) {
         this.jwtAuthFilter = jwtAuthFilter;
-        // this.oAuth2SuccessHandler = oAuth2SuccessHandler;
+        this.oAuth2SuccessHandler = oAuth2SuccessHandler;
     }
 
     @Bean
@@ -40,8 +40,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
-                        // .requestMatchers("/oauth2/**").permitAll()
-                        // .requestMatchers("/login/oauth2/code/**").permitAll()
+                        .requestMatchers("/oauth2/**").permitAll()
+                        .requestMatchers("/login/oauth2/code/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/user/**").authenticated()
@@ -49,9 +49,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/dashboard/charts/**").authenticated()
                         .anyRequest().authenticated()
                 )
-                // .oauth2Login(oauth2 -> oauth2
-                //         .successHandler(oAuth2SuccessHandler)
-                // )
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(oAuth2SuccessHandler)
+                )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
