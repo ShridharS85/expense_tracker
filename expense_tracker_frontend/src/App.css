@@ -1,0 +1,55 @@
+.app {
+    min-height: 100vh;
+    background: var(--bg);
+}
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.auth-shell {
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Content sits beside the fixed desktop sidebar */
+.app-content {
+    flex: 1;
+    min-width: 0;
+    margin-left: var(--sidebar-w);
+    padding: 30px 32px 48px;
+}
+
+.app-content-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .app-content {
+        padding: 26px 24px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Stack the mobile topbar above the content (both are flex children
+       of .app-shell; the drawer <aside> is position:fixed and out of flow) */
+    .app-shell {
+        flex-direction: column;
+    }
+
+    .app-content {
+        margin-left: 0;
+        padding: 20px 16px 40px;
+        /* room for the sticky mobile topbar */
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-content {
+        padding: 16px 12px 36px;
+    }
+}

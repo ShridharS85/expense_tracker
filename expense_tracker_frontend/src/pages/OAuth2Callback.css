@@ -1,0 +1,19 @@
+.oauth-callback {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(99, 102, 241, 0.14), transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.12), transparent 40%),
+        var(--bg);
+}
+
+.oauth-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: 48px 64px;
+}

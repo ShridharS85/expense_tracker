@@ -1,0 +1,62 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.dashboard-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.dashboard-recent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Category tints live in index.css (.cat-food, .cat-travel, ...) */
+
+/* Loading skeletons */
+.skeleton-stat {
+    height: 148px;
+}
+
+.skeleton-chart {
+    height: 380px;
+}
+
+.skeleton-table {
+    height: 320px;
+}
+
+@media (max-width: 1100px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .skeleton-stat {
+        height: 128px;
+    }
+}

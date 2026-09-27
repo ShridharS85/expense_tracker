@@ -1,0 +1,324 @@
+/* ---------- Desktop sidebar ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-w);
+    z-index: 100;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1), background 0.25s ease;
+}
+
+.navbar-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 22px 16px 18px;
+    overflow-y: auto;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 8px 20px;
+}
+
+.navbar-brand a {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, var(--brand-600), #8b5cf6);
+    color: #fff;
+    box-shadow: 0 8px 16px -6px rgba(79, 70, 229, 0.55);
+    flex-shrink: 0;
+}
+
+.brand-tile-sm {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+}
+
+.brand-text {
+    font-size: 1.08rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.drawer-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    color: var(--text-3);
+}
+
+.drawer-close:hover {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+/* Nav links */
+.navbar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 11px;
+    font-size: 0.93rem;
+    font-weight: 550;
+    color: var(--text-3);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.nav-link:hover {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+.nav-link:active {
+    transform: scale(0.99);
+}
+
+.nav-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--text-3);
+    transition: background 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.nav-link:hover .nav-link-icon {
+    color: var(--text-2);
+}
+
+.nav-link-active {
+    background: var(--brand-50);
+    color: var(--brand-700);
+    font-weight: 650;
+}
+
+[data-theme='dark'] .nav-link-active {
+    color: #c7d2fe;
+}
+
+.nav-link-active .nav-link-icon {
+    background: linear-gradient(135deg, var(--brand-600), var(--brand-500));
+    color: #fff;
+    box-shadow: 0 4px 10px -3px rgba(79, 70, 229, 0.55);
+}
+
+/* Sidebar footer */
+.navbar-footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: background 0.15s ease;
+}
+
+.nav-user-section:hover {
+    background: var(--surface-2);
+}
+
+.nav-user-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-600), #8b5cf6);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.nav-user-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.nav-user-name {
+    font-size: 0.9rem;
+    font-weight: 650;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-user-email {
+    font-size: 0.78rem;
+    color: var(--text-3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 11px;
+    font-size: 0.93rem;
+    font-weight: 550;
+    color: var(--text-3);
+    transition: background 0.15s ease, color 0.15s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.nav-logout:hover {
+    background: var(--expense-bg);
+    color: var(--expense);
+}
+
+.nav-logout-icon {
+    margin-left: 2px;
+}
+
+/* ---------- Mobile top bar (hidden on desktop) ---------- */
+.topbar {
+    display: none;
+}
+
+/* ---------- Mobile: sidebar becomes a drawer ---------- */
+@media (max-width: 900px) {
+    .navbar {
+        transform: translateX(-105%);
+        width: min(300px, 84vw);
+        border-right: none;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .navbar-open {
+        transform: translateX(0);
+    }
+
+    .drawer-close {
+        display: inline-flex;
+    }
+
+    .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 90;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--topbar-h);
+        padding: 0 14px;
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .topbar-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        color: var(--text-2);
+    }
+
+    .topbar-menu-btn:hover {
+        background: var(--surface-2);
+    }
+
+    .topbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .topbar-brand .brand-text {
+        font-size: 1rem;
+    }
+
+    .topbar-avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--brand-600), #8b5cf6);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+
+    .navbar-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 99;
+        background: rgba(15, 23, 42, 0.5);
+        backdrop-filter: blur(2px);
+        animation: overlay-in 0.2s ease;
+    }
+
+    @keyframes overlay-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}

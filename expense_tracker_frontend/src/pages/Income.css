@@ -1,0 +1,19 @@
+.income-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.empty-state .btn {
+    margin-top: 2px;
+}
+
+.skeleton-table {
+    height: 360px;
+}
+
+@media (max-width: 640px) {
+    .income-page .page-header .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+}

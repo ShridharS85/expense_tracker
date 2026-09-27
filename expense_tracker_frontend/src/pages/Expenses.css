@@ -1,0 +1,20 @@
+.expenses {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The empty-state action button sits centered inside the empty state */
+.empty-state .btn {
+    margin-top: 2px;
+}
+
+.skeleton-table {
+    height: 360px;
+}
+
+@media (max-width: 640px) {
+    .expenses .page-header .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+}

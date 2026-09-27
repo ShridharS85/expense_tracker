@@ -1,0 +1,125 @@
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: confirm-fade 0.18s ease;
+}
+
+@keyframes confirm-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.confirm-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 32px 28px 26px;
+    text-align: center;
+    animation: confirm-pop 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes confirm-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.confirm-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: var(--text-3);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.confirm-close:hover {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+.confirm-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: var(--warn-bg);
+    color: var(--warn);
+    margin-bottom: 16px;
+}
+
+.confirm-icon-danger {
+    background: var(--expense-bg);
+    color: var(--expense);
+}
+
+.confirm-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.confirm-message {
+    font-size: 0.93rem;
+    color: var(--text-3);
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-actions .btn {
+    flex: 1;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: #fff;
+    box-shadow: 0 6px 16px -6px rgba(220, 38, 38, 0.5);
+}
+
+.btn-danger:hover:not(:disabled) {
+    filter: brightness(1.05);
+}
+
+.spinner-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.spinner-label {
+    font-size: 0.95rem;
+    color: var(--text-3);
+}

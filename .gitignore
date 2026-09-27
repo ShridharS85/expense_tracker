@@ -1,0 +1,17 @@
+# Environment files
+.env
+**/.env
+
+# VS Code
+.vscode/
+
+# Java / Maven
+target/
+*.class
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.iml
